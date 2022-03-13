@@ -1,0 +1,14 @@
+INSERT INTO ninja_dojos .dojos(name)
+Values ('dania'),('dania'),('hamza');
+
+INSERT INTO ninja_dojos.ninjas(first_name,last_name,age,dojo_id)
+Values ('dania','hazem',21,1),('dania','hazem',31,2),('hamza','mufeed',33,3);
+
+select * from ninja_dojos .dojos
+LEFT join ninja_dojos.ninjas ON ninja_dojos .dojos.dojo_id = ninja_dojos.ninjas.dojo_id
+WHERE ninja_dojos .dojos.dojo_id=3;
+
+select * from ninja_dojos .dojos
+LEFT join ninja_dojos.ninjas ON ninja_dojos .dojos.dojo_id = ninja_dojos.ninjas.dojo_id
+WHERE ninja_dojos .dojos.dojo_id=( select ninja_dojos.dojos.dojo_id from 
+ ninja_dojos.ninjas.id_ninja ORDER BY DESC LIMIT 1);
