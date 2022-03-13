@@ -1,0 +1,19 @@
+INSERT INTO users_schema.users (first_name,last_name,email)
+values ("dania","abu jazar","dhkhalil99@gmailcom"),
+("qusay","abu jazar","qhkhalil99@gmailcom"),
+("hamza","mufeed","hmuffed@gmailcom");
+
+select * from users_schema.users ;
+
+select * from users_schema.users 
+WHERE email ='dhkhalil99@gmailcom';
+
+select * from users_schema.users 
+WHERE id =3;
+
+UPDATE users_schema.users  set last_name="samia"
+where id=3;
+
+Delete from users_schema.users where id=3;
+
+select * from users_schema.users order by first_name;
