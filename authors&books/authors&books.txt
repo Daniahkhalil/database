@@ -1,0 +1,38 @@
+use books;
+
+INSERT INTO authors(name)
+VALUES ("Jane Austen"),("Emily Dickinson"),("Fyodor Dostoevsky"),("William Shakespeare"),("Lau Tzu");
+
+INSERT INTO books(title)
+VALUES ("C Sharp"),("java"),("python"),("php"),("ruby");
+
+select * from books;
+
+UPDATE books SET title ='C#' WHERE book_id=1;
+
+UPDATE authors SET name ='BILL' WHERE author_id=4;
+
+select * from authors;
+
+INSERT INTO favorites(author_id,book_id)
+VALUES (1,1),(1,2),(2,1),(2,2),(2,3),(3,1),(3,2),(3,3),(3,4),(4,1),(4,2),(4,3),(4,4),(4,5);
+
+select * from books 
+join favorites on  favorites.book_id = books.book_id
+join authors on authors.author_id = favorites.author_id
+where books.book_id=3;
+
+DELETE from favorites 
+WHERE book_id=3
+AND author_id=2;
+
+INSERT INTO favorites(author_id,book_id)
+VALUES (5,2);
+
+select * from authors  
+join favorites on  favorites.author_id= authors.author_id 
+join books on favorites.book_id = books.book_id
+where authors.author_id=3;
+
+select * from favorites
+where book_id=5;
