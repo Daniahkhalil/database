@@ -1,0 +1,32 @@
+use friendships;
+
+INSERT INTO users(first_name,last_name)
+VALUES ("Amy","Giver"),("Eli","	Byers"),("Marky","Mark"),("Big","Bird"),("Kermit","The Frog"),("Dania","Abujazar");
+
+INSERT INTO friendships (user_id,friend_id)
+VALUES (1,2),(1,4),(1,6),(2,1),(2,3),(2,5),(3,2),(3,5),(4,3),(5,1),(5,6),(6,2),(6,3);
+
+SELECT users.first_name as first_name,users.last_name as last_name , users2.first_name as friend_first_name , users2.last_name as friend_last_name  from users
+ join friendships on friendships.user_id = users.user_id
+ left join users as users2 on users2.user_id = friendships.user_id;
+ 
+ SELECT users2.first_name as first_name , users2.last_name as last_name , users.first_name as friend_with  from users
+ join friendships on friendships.user_id = users.user_id
+ left join users as users2 on users2.user_id = friendships.user_id
+ WHERE users.user_id=1;
+ 
+SELECT  users.first_name ,users.last_name , count(users2.user_id) as num_friends 
+FROM users JOIN  friendships on users.user_id = friendships.user_id
+JOIN users as users2 
+on users2.user_id = friendships.friend_id  group by users2.user_id
+order by num_friends DESC
+limit 1;
+
+select users.user_id, users.first_name ,users.last_name, count(friends.user_id) as frieneds  from users  join
+friendships on users.user_id = friendships.user_id
+join users as friends 
+on friends.user_id = friendships.friend_id
+where users.user_id=3;
+
+
+ 
